@@ -38,7 +38,7 @@ function(generateOsqueryTablesYaraYaratable)
   enableLinkWholeArchive(osquery_tables_yara_yaratable)
 
   target_link_libraries(osquery_tables_yara_yaratable PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_config
     osquery_dispatcher

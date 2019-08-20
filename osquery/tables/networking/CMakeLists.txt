@@ -72,7 +72,7 @@ function(generateOsqueryTablesNetworking)
   )
 
   target_link_libraries(osquery_tables_networking PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_filesystem
     osquery_remote_httpclient

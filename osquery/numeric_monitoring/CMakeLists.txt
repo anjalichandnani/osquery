@@ -20,7 +20,7 @@ function(generateOsqueryNumericmonitoring)
   )
 
   target_link_libraries(osquery_numericmonitoring PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_utils
     thirdparty_boost

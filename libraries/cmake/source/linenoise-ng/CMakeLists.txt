@@ -14,12 +14,8 @@ function(linenoisengMain)
     "${library_root}/src/wcwidth.cpp"
   )
 
-  target_link_libraries(thirdparty_linenoise-ng PUBLIC
-    global_cxx_settings
-  )
-
   target_link_libraries(thirdparty_linenoise-ng PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 
   target_include_directories(thirdparty_linenoise-ng PRIVATE

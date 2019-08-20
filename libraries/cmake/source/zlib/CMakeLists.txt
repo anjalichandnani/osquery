@@ -33,12 +33,8 @@ function(zlibMain)
     HAVE_STDARG_H
   )
 
-  target_link_libraries(thirdparty_zlib PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_zlib PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_zlib PRIVATE

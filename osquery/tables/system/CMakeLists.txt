@@ -208,7 +208,7 @@ function(generateOsqueryTablesSystemSystemtable)
   )
 
   target_link_libraries(osquery_tables_system_systemtable PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_core
     osquery_events

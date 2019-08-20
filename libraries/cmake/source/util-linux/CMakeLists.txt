@@ -198,13 +198,8 @@ function(utillinuxMain)
     _PATH_LOCALSTATEDIR=\"/run\"
   )
 
-  target_link_libraries(thirdparty_util-linux PUBLIC
-    global_c_settings
-  )
-
-
   target_link_libraries(thirdparty_util-linux PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_compile_options(thirdparty_util-linux PRIVATE

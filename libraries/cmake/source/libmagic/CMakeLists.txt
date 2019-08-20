@@ -42,7 +42,7 @@ function(libmagicMain)
 
   target_compile_definitions(thirdparty_libmagic PRIVATE
     HAVE_CONFIG_H
-    MAGIC='"/usr/local/share/misc/magic"'
+    MAGIC=\"/usr/local/share/misc/magic\"
   )
 
   target_compile_options(thirdparty_libmagic PRIVATE
@@ -50,12 +50,11 @@ function(libmagicMain)
   )
 
   target_link_libraries(thirdparty_libmagic PUBLIC
-    global_c_settings
     thirdparty_zlib
   )
 
   target_link_libraries(thirdparty_libmagic PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libmagic PRIVATE

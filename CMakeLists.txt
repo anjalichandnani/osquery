@@ -5,6 +5,9 @@
 # the LICENSE file found in the root directory of this source tree.
 
 cmake_minimum_required(VERSION 3.13.3)
+
+cmake_policy(SET CMP0083 NEW)
+
 project(osquery)
 
 if(OSQUERY_BUILD_TESTS)
@@ -14,6 +17,7 @@ endif()
 include(cmake/globals.cmake)
 include(cmake/utilities.cmake)
 include(cmake/options.cmake)
+include(cmake/flags.cmake)
 include(cmake/packaging.cmake)
 
 function(main)
@@ -31,8 +35,6 @@ function(main)
       message(STATUS "Warning: the selected C or C++ compiler is not clang/clang++. Compilation may fail")
     endif()
   endif()
-
-  generateGlobalSettingsTargets()
 
   findPythonExecutablePath()
   generateSpecialTargets()

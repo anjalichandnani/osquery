@@ -23,12 +23,8 @@ function(libauditMain)
     PIC
   )
 
-  target_link_libraries(thirdparty_libaudit PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_libaudit PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libaudit PRIVATE

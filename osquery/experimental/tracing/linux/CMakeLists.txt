@@ -27,7 +27,7 @@ function(generateExperimentalTracingLinuxProbesevents)
     add_osquery_library("${library_name}" EXCLUDE_FROM_ALL ${source_files})
 
     target_link_libraries("${library_name}" PUBLIC
-      global_cxx_settings
+      osquery_cxx_settings
       osquery_logger
       osquery_utils_conversions
       osquery_utils_expected

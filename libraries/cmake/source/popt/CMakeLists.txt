@@ -15,12 +15,8 @@ function(poptMain)
     "${library_root}/poptint.c"
   )
 
-  target_link_libraries(thirdparty_popt PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_popt PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_compile_definitions(thirdparty_popt PRIVATE

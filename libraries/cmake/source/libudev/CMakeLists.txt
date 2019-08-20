@@ -32,12 +32,8 @@ function(libudevMain)
     -include config.h
   )
 
-  target_link_libraries(thirdparty_libudev PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_libudev PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libudev PRIVATE

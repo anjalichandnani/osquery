@@ -148,7 +148,6 @@ function(libarchiveMain)
   )
 
   target_link_libraries(thirdparty_libarchive PUBLIC
-    global_c_settings
     thirdparty_openssl
     thirdparty_zlib
     thirdparty_bzip2
@@ -157,7 +156,7 @@ function(libarchiveMain)
   )
 
   target_link_libraries(thirdparty_libarchive PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libarchive PRIVATE

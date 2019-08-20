@@ -19,7 +19,7 @@ function(generateOsqueryCarver)
   )
 
   target_link_libraries(osquery_carver PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_core_plugins
     osquery_core_sql

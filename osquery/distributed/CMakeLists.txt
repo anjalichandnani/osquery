@@ -18,7 +18,7 @@ function(generateOsqueryDistributed)
   )
 
   target_link_libraries(osquery_distributed PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_core_plugins
     osquery_database

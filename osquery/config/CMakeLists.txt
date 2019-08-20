@@ -21,7 +21,7 @@ function(generateOsqueryConfig)
   enableLinkWholeArchive(osquery_config)
 
   target_link_libraries(osquery_config PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_filesystem
     osquery_hashing

@@ -91,12 +91,11 @@ function(generateLibrdkafka)
   )
 
   target_link_libraries(thirdparty_librdkafka_c PUBLIC
-    global_c_settings
     thirdparty_openssl
   )
 
   target_link_libraries(thirdparty_librdkafka_c PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_librdkafka_c PRIVATE
@@ -133,12 +132,8 @@ function(generateLibrdkafkaxx)
     COPYONLY
   )
 
-  target_link_libraries(thirdparty_librdkafka_cxx PUBLIC
-    global_cxx_settings
-  )
-
   target_link_libraries(thirdparty_librdkafka_cxx PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 
   target_include_directories(thirdparty_librdkafka_cxx PRIVATE

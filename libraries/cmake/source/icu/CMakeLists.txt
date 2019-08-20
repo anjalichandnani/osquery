@@ -9,10 +9,6 @@ function(icuMain)
 
   add_library(thirdparty_icu INTERFACE)
 
-  target_link_libraries(thirdparty_icu INTERFACE
-    global_cxx_settings
-  )
-
   target_include_directories(thirdparty_icu SYSTEM INTERFACE
     "${library_root}/i18n"
     "${library_root}/common"

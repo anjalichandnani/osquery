@@ -59,7 +59,7 @@ function(sqliteMain)
     )
   endif()
 
-  target_link_libraries("${identifier}" PRIVATE global_c_settings)
+  target_link_libraries("${identifier}" PRIVATE thirdparty_c_settings)
   target_link_libraries("${identifier}" PRIVATE "${identifier}_local_flags")
 
 endfunction()

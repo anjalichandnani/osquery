@@ -37,12 +37,8 @@ function(googleTestMain)
   )
 
   foreach(target_name ${target_list})
-    target_link_libraries("${target_name}" PUBLIC
-      global_cxx_settings
-    )
-
     target_link_libraries("${target_name}" PRIVATE
-      thirdparty_source_module_settings
+      thirdparty_cxx_settings
     )
   endforeach()
 

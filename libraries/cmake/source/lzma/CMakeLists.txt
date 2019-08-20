@@ -90,12 +90,8 @@ function(lzmaMain)
     -include config.h
   )
 
-  target_link_libraries(thirdparty_lzma PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_lzma PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_lzma PRIVATE

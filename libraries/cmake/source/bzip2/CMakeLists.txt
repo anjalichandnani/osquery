@@ -21,12 +21,8 @@ function(bzip2Main)
     _FILE_OFFSET_BITS=64
   )
 
-  target_link_libraries(thirdparty_bzip2 PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_bzip2 PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_bzip2 PRIVATE

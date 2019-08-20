@@ -25,12 +25,8 @@ function(libelfinElf)
     "${CMAKE_CURRENT_SOURCE_DIR}/generated/elf/to_string.cc"
   )
 
-  target_link_libraries(thirdparty_libelfin_elf PUBLIC
-    global_cxx_settings
-  )
-
   target_link_libraries(thirdparty_libelfin_elf PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 
   # The original package built for Buck was built installing
@@ -80,12 +76,8 @@ function(libelfinDwarf)
     "${CMAKE_CURRENT_SOURCE_DIR}/generated/dwarf/to_string.cc"
   )
 
-  target_link_libraries(thirdparty_libelfin_dwarf PUBLIC
-    global_cxx_settings
-  )
-
   target_link_libraries(thirdparty_libelfin_dwarf PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 
   # The original package built for Buck was built installing

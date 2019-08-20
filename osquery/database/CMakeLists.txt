@@ -19,7 +19,7 @@ function(generateOsqueryDatabase)
   )
 
   target_link_libraries(osquery_database PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_utils
     osquery_utils_conversions

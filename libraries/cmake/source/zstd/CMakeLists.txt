@@ -50,12 +50,11 @@ function(zstdMain)
   endif()
 
   target_link_libraries(thirdparty_zstd PUBLIC
-    global_c_settings
     thirdparty_glibc
   )
 
   target_link_libraries(thirdparty_zstd PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_zstd PRIVATE

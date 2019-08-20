@@ -28,12 +28,8 @@ function(libgpgerrorMain)
     PKGDATADIR="/usr/local/share/libgpg-error"
   )
 
-  target_link_libraries(thirdparty_libgpg-error PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_libgpg-error PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libgpg-error PRIVATE

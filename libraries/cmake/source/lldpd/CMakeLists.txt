@@ -42,12 +42,8 @@ function(generateLibevent)
     _GNU_SOURCE
   )
 
-  target_link_libraries(thirdparty_libevent PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_libevent PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libevent PRIVATE
@@ -104,12 +100,11 @@ function(generateLiblldpd)
   )
 
   target_link_libraries(thirdparty_lldpd PUBLIC
-    global_c_settings
     thirdparty_libevent
   )
 
   target_link_libraries(thirdparty_lldpd PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_lldpd PRIVATE

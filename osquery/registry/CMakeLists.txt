@@ -20,7 +20,7 @@ function(generateOsqueryRegistry)
   )
 
   target_link_libraries(osquery_registry PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_core
     osquery_process

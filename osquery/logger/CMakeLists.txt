@@ -34,7 +34,7 @@ function(generateOsqueryLoggerDatalogger)
   )
 
   target_link_libraries(osquery_logger_datalogger PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_core_plugins
     osquery_database

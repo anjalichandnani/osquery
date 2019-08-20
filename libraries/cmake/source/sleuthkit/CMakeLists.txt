@@ -128,14 +128,13 @@ function(sleuthkitMain)
   )
 
   target_link_libraries(thirdparty_sleuthkit PUBLIC
-    global_cxx_settings
-    global_c_settings
     thirdparty_zlib
     thirdparty_sqlite
   )
 
   target_link_libraries(thirdparty_sleuthkit PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_sleuthkit PRIVATE

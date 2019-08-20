@@ -26,8 +26,7 @@ function(googleLogMain)
   set(library_root "${CMAKE_CURRENT_SOURCE_DIR}/src")
   add_subdirectory("${library_root}" "${CMAKE_CURRENT_BINARY_DIR}/submodule" EXCLUDE_FROM_ALL)
 
-  copyInterfaceTargetFlagsTo(glog global_cxx_settings PUBLIC)
-  copyInterfaceTargetFlagsTo(glog thirdparty_source_module_settings PRIVATE)
+  copyInterfaceTargetFlagsTo(glog thirdparty_cxx_settings PRIVATE)
 
   get_target_property(gflags_include_directory thirdparty_gflags INTERFACE_INCLUDE_DIRECTORIES)
   target_include_directories(glog PRIVATE "${gflags_include_directory}")

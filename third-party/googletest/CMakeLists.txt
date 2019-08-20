@@ -53,7 +53,7 @@ function(googletestMain)
   target_include_directories(thirdparty_googletest PRIVATE "${extract_folder}/googlemock")
 
   target_link_libraries(thirdparty_googletest PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     thirdparty_googletest_headers
     thirdparty_googlemock_headers
     thirdparty_glibc_pthread

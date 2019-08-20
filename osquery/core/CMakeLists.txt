@@ -69,7 +69,7 @@ function(generateOsqueryCore)
   endif()
 
   target_link_libraries(osquery_core PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
 
     ${dependencies}
   )

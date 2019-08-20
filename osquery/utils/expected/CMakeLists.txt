@@ -16,7 +16,7 @@ function(generateOsqueryUtilsExpected)
   add_osquery_library(osquery_utils_expected INTERFACE)
 
   target_link_libraries(osquery_utils_expected INTERFACE
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_utils_debug
     osquery_utils_error
     thirdparty_boost
@@ -36,7 +36,7 @@ function(generateOsqueryUtilsExpectedExpectedtestsTest)
   add_osquery_executable(osquery_utils_expected_expectedtests-test tests/expected.cpp)
 
   target_link_libraries(osquery_utils_expected_expectedtests-test PRIVATE
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_utils_expected
     thirdparty_googletest
   )

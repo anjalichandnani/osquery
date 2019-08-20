@@ -122,7 +122,6 @@ function(librpmMain)
   )
 
   target_link_libraries(thirdparty_librpm PUBLIC
-    global_c_settings
     thirdparty_berkeley-db
     thirdparty_openssl
     thirdparty_zlib
@@ -131,7 +130,7 @@ function(librpmMain)
   )
 
   target_link_libraries(thirdparty_librpm PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_librpm PRIVATE

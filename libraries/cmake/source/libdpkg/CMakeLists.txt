@@ -70,14 +70,13 @@ function(libdpkgMain)
   )
 
   target_link_libraries(thirdparty_libdpkg PUBLIC
-    global_c_settings
     thirdparty_lzma
     thirdparty_zlib
     thirdparty_bzip2
   )
 
   target_link_libraries(thirdparty_libdpkg PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_compile_definitions(thirdparty_libdpkg PRIVATE

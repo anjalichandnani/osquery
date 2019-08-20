@@ -22,7 +22,7 @@ function(generateOsqueryNumericmonitoringPluginsNumericmonitoringfilesystem)
   enableLinkWholeArchive(plugins_numericmonitoring_filesystem)
 
   target_link_libraries(plugins_numericmonitoring_filesystem PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_filesystem
     osquery_numericmonitoring
   )

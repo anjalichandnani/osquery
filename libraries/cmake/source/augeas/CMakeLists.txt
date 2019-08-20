@@ -122,13 +122,12 @@ function(augeasMain)
   importSELinux()
 
   target_link_libraries(thirdparty_augeas PUBLIC
-    global_c_settings
     thirdparty_libxml2
     thirdparty_selinux
   )
 
   target_link_libraries(thirdparty_augeas PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_augeas PRIVATE
@@ -160,7 +159,7 @@ function(importSELinux)
   )
 
   target_link_libraries(thirdparty_selinux PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_selinux SYSTEM INTERFACE

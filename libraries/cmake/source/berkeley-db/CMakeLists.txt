@@ -282,12 +282,11 @@ function(berkeleydbMain)
   )
 
   target_link_libraries(thirdparty_berkeley-db PUBLIC
-    global_c_settings
     thirdparty_sqlite
   )
 
   target_link_libraries(thirdparty_berkeley-db PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_berkeley-db PRIVATE

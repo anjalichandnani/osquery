@@ -17,7 +17,7 @@ function(generateOsquerySystemNetworkHostname)
   add_osquery_library(osquery_system_network_hostname EXCLUDE_FROM_ALL hostname.cpp)
 
   target_link_libraries(osquery_system_network_hostname PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_utils_schemer
     osquery_utils_status

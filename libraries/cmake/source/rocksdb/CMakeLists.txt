@@ -271,12 +271,11 @@ function(rocksdbMain)
   )
 
   target_link_libraries(thirdparty_rocksdb PUBLIC
-    global_cxx_settings
     thirdparty_googletest
   )
 
   target_link_libraries(thirdparty_rocksdb PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 
   target_include_directories(thirdparty_rocksdb PRIVATE

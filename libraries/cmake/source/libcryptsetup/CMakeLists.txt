@@ -50,7 +50,6 @@ function(libcryptsetupMain)
   )
 
   target_link_libraries(thirdparty_libcryptsetup PUBLIC
-    global_c_settings
     thirdparty_util-linux
     thirdparty_libgcrypt
     thirdparty_libdevmapper
@@ -58,7 +57,7 @@ function(libcryptsetupMain)
   )
 
   target_link_libraries(thirdparty_libcryptsetup PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libcryptsetup PRIVATE

@@ -131,12 +131,8 @@ function(libdevmapperMain)
     HAVE_CONFIG_H
   )
 
-  target_link_libraries(thirdparty_libdevmapper PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_libdevmapper PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   set(public_header_path_list

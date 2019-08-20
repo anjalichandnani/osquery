@@ -91,14 +91,13 @@ function(thrifMain)
   )
 
   target_link_libraries(thirdparty_thrift PUBLIC
-    global_cxx_settings
     thirdparty_openssl
     thirdparty_zlib
     thirdparty_boost
   )
 
   target_link_libraries(thirdparty_thrift PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 
   target_include_directories(thirdparty_thrift PRIVATE

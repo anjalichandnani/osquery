@@ -104,12 +104,8 @@ function(generateAwsCcommonTarget)
     "${binary_root}/include"
   )
 
-  target_link_libraries(thirdparty_aws_c_common PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_aws_c_common PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 endfunction()
 
@@ -129,12 +125,8 @@ function(generateAwsChecksumsTarget)
     "${library_root}/include"
   )
 
-  target_link_libraries(thirdparty_aws_checksums PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_aws_checksums PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 endfunction()
 
@@ -154,12 +146,8 @@ function(generateAwsCeventStreamTarget)
     thirdparty_aws_checksums
   )
 
-  target_link_libraries(thirdparty_aws_c_event_stream PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_aws_c_event_stream PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 endfunction()
 
@@ -185,10 +173,6 @@ function(generateTinyXml2)
   target_include_directories(thirdparty_tinyxml2 INTERFACE
     "${include_root}"
   )
-
-  target_link_libraries(thirdparty_tinyxml2 INTERFACE
-    global_c_settings
-  )
 endfunction()
 
 function(generateCjson)
@@ -197,10 +181,6 @@ function(generateCjson)
   add_library(thirdparty_cjson INTERFACE)
   target_include_directories(thirdparty_cjson INTERFACE
     "${include_root}"
-  )
-
-  target_link_libraries(thirdparty_cjson INTERFACE
-    global_c_settings
   )
 endfunction()
 
@@ -312,7 +292,6 @@ function(generateAwsCore)
     thirdparty_tinyxml2
     thirdparty_cjson
     thirdparty_aws_c_event_stream
-    global_cxx_settings
   )
 
   target_include_directories(thirdparty_aws_core SYSTEM PUBLIC
@@ -327,7 +306,7 @@ function(generateAwsCore)
   )
 
   target_link_libraries(thirdparty_aws_core PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -434,11 +413,10 @@ function(generateAwsFirehose)
 
   target_link_libraries(thirdparty_aws_firehose PUBLIC
     thirdparty_aws_core
-    global_cxx_settings
   )
 
   target_link_libraries(thirdparty_aws_firehose PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -523,11 +501,10 @@ function(generateAwsKinesis)
 
   target_link_libraries(thirdparty_aws_kinesis PUBLIC
     thirdparty_aws_core
-    global_cxx_settings
   )
 
   target_link_libraries(thirdparty_aws_kinesis PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -1744,11 +1721,10 @@ function(generateAwsEc2)
 
   target_link_libraries(thirdparty_aws_ec2 PUBLIC
     thirdparty_aws_core
-    global_cxx_settings
   )
 
   target_link_libraries(thirdparty_aws_ec2 PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -1789,11 +1765,10 @@ function(generateAwsSts)
 
   target_link_libraries(thirdparty_aws_sts PUBLIC
     thirdparty_aws_core
-    global_cxx_settings
   )
 
   target_link_libraries(thirdparty_aws_sts PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
   )
 endfunction()
 

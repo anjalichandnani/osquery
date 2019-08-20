@@ -40,7 +40,7 @@ function(generateOsquerySql)
   enableLinkWholeArchive(osquery_sql)
 
   target_link_libraries(osquery_sql PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_carver
     osquery_core
     osquery_core_plugins

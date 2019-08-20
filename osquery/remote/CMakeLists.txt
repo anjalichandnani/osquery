@@ -24,7 +24,7 @@ function(generateOsqueryRemoteRequests)
   )
 
   target_link_libraries(osquery_remote_requests PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_utils_status
     thirdparty_boost
@@ -46,7 +46,7 @@ function(generateOsqueryRemoteHttpclient)
   )
 
   target_link_libraries(osquery_remote_httpclient PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_utils_status
     thirdparty_boost
@@ -65,7 +65,7 @@ function(generateOsqueryRemoteUtility)
   add_osquery_library(osquery_remote_utility INTERFACE)
 
   target_link_libraries(osquery_remote_utility INTERFACE
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_process
     osquery_remote_transports_transportstls
     osquery_remote_httpclient

@@ -23,7 +23,7 @@ function(generateOsqueryKillswitch)
   enableLinkWholeArchive(osquery_killswitch)
 
   target_link_libraries(osquery_killswitch PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     thirdparty_googletest_headers
   )

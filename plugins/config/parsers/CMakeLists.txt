@@ -29,7 +29,7 @@ function(generatePluginsConfigParsers)
   enableLinkWholeArchive(plugins_config_parsers)
 
   target_link_libraries(plugins_config_parsers PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_config
     osquery_core

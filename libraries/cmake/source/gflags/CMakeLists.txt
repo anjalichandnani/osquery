@@ -12,13 +12,7 @@ function(gflagsMain)
 
   add_subdirectory("${library_root}" "${CMAKE_CURRENT_BINARY_DIR}/submodule" EXCLUDE_FROM_ALL)
 
-  set(compile_options_target_list
-    global_cxx_settings
-    thirdparty_source_module_settings
-  )
-
-  copyInterfaceTargetFlagsTo(gflags_static global_cxx_settings PUBLIC)
-  copyInterfaceTargetFlagsTo(gflags_static thirdparty_source_module_settings PRIVATE)
+  copyInterfaceTargetFlagsTo(gflags_static thirdparty_cxx_settings PRIVATE)
 
   add_library(thirdparty_gflags INTERFACE)
   target_link_libraries(thirdparty_gflags INTERFACE

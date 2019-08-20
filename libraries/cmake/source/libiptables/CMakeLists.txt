@@ -30,12 +30,8 @@ function(generateLibiptc)
     XTABLES_INTERNAL
   )
 
-  target_link_libraries(thirdparty_libiptc PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_libiptc PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libiptc PRIVATE

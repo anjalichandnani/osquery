@@ -76,13 +76,9 @@ function(smartmontoolsMain)
     HAVE_STRTOULL
   )
 
-  target_link_libraries(thirdparty_smartmontools PUBLIC
-    global_cxx_settings
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_smartmontools PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_smartmontools PRIVATE

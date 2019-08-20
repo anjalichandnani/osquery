@@ -27,7 +27,7 @@ function(generateOsqueryProcess)
   )
 
   target_link_libraries(osquery_process PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_utils_system_env
     thirdparty_boost

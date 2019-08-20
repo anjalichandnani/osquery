@@ -17,7 +17,7 @@ function(generateOsqueryUtilsSchemerJson)
   add_library(osquery_utils_schemer_json INTERFACE)
 
   target_link_libraries(osquery_utils_schemer_json INTERFACE
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_utils_expected
     osquery_utils_json
     osquery_utils_schemer

@@ -192,12 +192,11 @@ function(libgcryptMain)
   )
 
   target_link_libraries(thirdparty_libgcrypt PUBLIC
-    global_c_settings
     thirdparty_libgpg-error
   )
 
   target_link_libraries(thirdparty_libgcrypt PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libgcrypt PRIVATE

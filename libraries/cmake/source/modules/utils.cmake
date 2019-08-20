@@ -119,23 +119,18 @@ function(importSourceSubmodule)
     endif()
   endforeach()
 
-  if(NOT TARGET thirdparty_source_module_settings)
-    add_library(thirdparty_source_module_settings INTERFACE)
-
-    if(NOT OSQUERY_THIRD_PARTY_SOURCE_MODULE_WARNINGS)
-      target_compile_options(thirdparty_source_module_settings INTERFACE
+  if(NOT OSQUERY_THIRD_PARTY_SOURCE_MODULE_WARNINGS)
+    if(NOT TARGET submodule_options)
+      add_library(submodule_options INTERFACE)
+      target_compile_options(submodule_options INTERFACE
         -Wno-everything -Wno-all -Wno-error
       )
-    endif()
 
-    if(DEFINED PLATFORM_LINUX)
-      target_compile_options(thirdparty_source_module_settings INTERFACE
-        -Oz
-        -g0
+      target_link_libraries(thirdparty_cxx_settings INTERFACE
+        submodule_options
       )
-
-      target_compile_definitions(thirdparty_source_module_settings INTERFACE
-        NDEBUG
+      target_link_libraries(thirdparty_c_settings INTERFACE
+        submodule_options
       )
     endif()
   endif()

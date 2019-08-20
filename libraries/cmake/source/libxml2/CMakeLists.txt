@@ -61,13 +61,12 @@ function(libxml2Main)
   )
 
   target_link_libraries(thirdparty_libxml2 PUBLIC
-    global_c_settings
     thirdparty_lzma
     thirdparty_zlib
   )
 
   target_link_libraries(thirdparty_libxml2 PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_libxml2 PRIVATE

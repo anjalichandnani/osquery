@@ -8,12 +8,8 @@ function(sqliteMain)
   set(SQLITE_GENERATE_INSTALL_TARGET false CACHE BOOL "" FORCE)
   add_subdirectory(src)
 
-  target_link_libraries(thirdparty_sqlite PUBLIC
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_sqlite PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 endfunction()
 

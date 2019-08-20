@@ -21,7 +21,7 @@ function(generateOsqueryDispatcher)
   )
 
   target_link_libraries(osquery_dispatcher PUBLIC
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_core
     osquery_logger_datalogger
     osquery_process

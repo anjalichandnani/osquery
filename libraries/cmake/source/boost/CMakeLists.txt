@@ -109,7 +109,6 @@ function(generateBoostSerialization)
   )
 
   target_link_libraries(thirdparty_boost_serialization PUBLIC
-    global_cxx_settings
     thirdparty_boost_assert
     thirdparty_boost_core
     thirdparty_boost_integer
@@ -122,7 +121,11 @@ function(generateBoostSerialization)
     thirdparty_boost_spirit
     thirdparty_boost_array
     thirdparty_boost_function
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_serialization PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostNumericConversion)
@@ -135,7 +138,6 @@ function(generateBoostNumericConversion)
   )
 
   target_link_libraries(thirdparty_boost_numericconversion INTERFACE
-    global_cxx_settings
     thirdparty_boost_config
   )
 endfunction()
@@ -152,11 +154,14 @@ function(generateBoostRandom)
   )
 
   target_link_libraries(thirdparty_boost_random PUBLIC
-    global_cxx_settings
     thirdparty_boost_core
     thirdparty_boost_system
     thirdparty_boost_throwexception
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_random PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(importBoostInterfaceLibrary folder_name)
@@ -178,10 +183,6 @@ function(importBoostInterfaceLibrary folder_name)
       "thirdparty_boost_${additional_dependency}"
     )
   endforeach()
-
-  target_link_libraries("${target_name}" INTERFACE
-    global_cxx_settings
-  )
 endfunction()
 
 function(importBoostInterfaceLibraries)
@@ -322,7 +323,6 @@ function(generateBoostLocale)
   )
 
   target_link_libraries(thirdparty_boost_locale PUBLIC
-    global_cxx_settings
     thirdparty_boost_assert
     thirdparty_boost_iterator
     thirdparty_boost_typetraits
@@ -330,7 +330,11 @@ function(generateBoostLocale)
     thirdparty_boost_thread
     thirdparty_boost_unordered
     thirdparty_icu
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_locale PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostException)
@@ -345,9 +349,12 @@ function(generateBoostException)
   )
 
   target_link_libraries(thirdparty_boost_exception PUBLIC
-    global_cxx_settings
     thirdparty_boost_config
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_exception PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostChrono)
@@ -364,14 +371,17 @@ function(generateBoostChrono)
   )
 
   target_link_libraries(thirdparty_boost_chrono PUBLIC
-    global_cxx_settings
     thirdparty_boost_predef
     thirdparty_boost_mpl
     thirdparty_boost_ratio
     thirdparty_boost_system
     thirdparty_boost_throwexception
     thirdparty_boost_utility
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_chrono PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostMath)
@@ -518,7 +528,6 @@ function(generateBoostMath)
   )
 
   target_link_libraries(thirdparty_boost_math PUBLIC
-    global_cxx_settings
     thirdparty_boost_staticassert
     thirdparty_boost_predef
     thirdparty_boost_typetraits
@@ -531,7 +540,11 @@ function(generateBoostMath)
     thirdparty_boost_multiprecision
     thirdparty_boost_io
     thirdparty_boost_tokenizer
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_math PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostContainer)
@@ -551,11 +564,14 @@ function(generateBoostContainer)
   )
 
   target_link_libraries(thirdparty_boost_container PUBLIC
-    global_cxx_settings
     thirdparty_boost_move
     thirdparty_boost_core
     thirdparty_boost_intrusive
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_container PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostDateTime)
@@ -575,14 +591,17 @@ function(generateBoostDateTime)
   )
 
   target_link_libraries(thirdparty_boost_datetime PUBLIC
-    global_cxx_settings
     thirdparty_boost_throwexception
     thirdparty_boost_utility
     thirdparty_boost_mpl
     thirdparty_boost_typetraits
     thirdparty_boost_smartptr
     thirdparty_boost_lexicalcast
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_datetime PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostContext)
@@ -619,11 +638,14 @@ function(generateBoostContext)
   )
 
   target_link_libraries(thirdparty_boost_context PUBLIC
-    global_cxx_settings
     thirdparty_boost_config
     thirdparty_boost_assert
     thirdparty_boost_smartptr
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_context PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostCoroutine)
@@ -650,13 +672,16 @@ function(generateBoostCoroutine)
   )
 
   target_link_libraries(thirdparty_boost_coroutine PUBLIC
-    global_cxx_settings
     thirdparty_boost_core
     thirdparty_boost_system
     thirdparty_boost_typetraits
     thirdparty_boost_context
     thirdparty_boost_thread
-  )  
+  )
+
+  target_link_libraries(thirdparty_boost_coroutine PRIVATE
+    thirdparty_cxx_settings
+  )
 endfunction()
 
 function(generateBoostFilesystem)
@@ -683,7 +708,6 @@ function(generateBoostFilesystem)
   )
 
   target_link_libraries(thirdparty_boost_filesystem PUBLIC
-    global_cxx_settings
     thirdparty_boost_system
     thirdparty_boost_typetraits
     thirdparty_boost_core
@@ -691,6 +715,10 @@ function(generateBoostFilesystem)
     thirdparty_boost_io
     thirdparty_boost_containerhash
     thirdparty_boost_smartptr
+  )
+
+  target_link_libraries(thirdparty_boost_filesystem PRIVATE
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -723,7 +751,6 @@ function(generateBoostRegex)
   )
 
   target_link_libraries(thirdparty_boost_regex PUBLIC
-    global_cxx_settings
     thirdparty_boost_predef
     thirdparty_boost_assert
     thirdparty_boost_throwexception
@@ -733,6 +760,10 @@ function(generateBoostRegex)
     thirdparty_boost_typetraits
     thirdparty_boost_integer
     thirdparty_boost_containerhash
+  )
+
+  target_link_libraries(thirdparty_boost_regex PRIVATE
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -748,8 +779,11 @@ function(generateBoostAtomic)
   )
 
   target_link_libraries(thirdparty_boost_atomic PUBLIC
-    global_cxx_settings
     thirdparty_boost_assert
+  )
+
+  target_link_libraries(thirdparty_boost_atomic PRIVATE
+    thirdparty_cxx_settings
   )
 endfunction()
 
@@ -782,7 +816,6 @@ function(generateBoostThread)
   )
 
   target_link_libraries(thirdparty_boost_thread PUBLIC
-    global_cxx_settings
     thirdparty_boost_core
     thirdparty_boost_system
     thirdparty_boost_typetraits
@@ -799,6 +832,10 @@ function(generateBoostThread)
     thirdparty_boost_function
     thirdparty_boost_typeindex
     thirdparty_boost_algorithm
+  )
+
+  target_link_libraries(thirdparty_boost_thread PRIVATE
+    thirdparty_cxx_settings
   )
 endfunction()
 

@@ -100,13 +100,12 @@ function(yaraMain)
   )
 
   target_link_libraries(thirdparty_yara PUBLIC
-    global_c_settings
     thirdparty_openssl
     thirdparty_libmagic
   )
 
   target_link_libraries(thirdparty_yara PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_yara PRIVATE

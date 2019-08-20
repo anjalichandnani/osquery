@@ -23,13 +23,9 @@ function(ssdeepCppMain)
     HAVE_CONFIG_H
   )
 
-  target_link_libraries(thirdparty_ssdeep-cpp PUBLIC
-    global_cxx_settings
-    global_c_settings
-  )
-
   target_link_libraries(thirdparty_ssdeep-cpp PRIVATE
-    thirdparty_source_module_settings
+    thirdparty_cxx_settings
+    thirdparty_c_settings
   )
 
   target_include_directories(thirdparty_ssdeep-cpp PRIVATE
