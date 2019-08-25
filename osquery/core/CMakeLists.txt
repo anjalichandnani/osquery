@@ -61,8 +61,11 @@ function(generateOsqueryCore)
     thirdparty_glog
     thirdparty_openssl
     thirdparty_sqlite
-    thirdparty_glibc_pthread
   )
+
+  if(DEFINED PLATFORM_POSIX)
+    list(APPEND dependencies thirdparty_glibc_pthread)
+  endif()
 
   if(DEFINED PLATFORM_LINUX)
     list(APPEND dependencies thirdparty_util-linux)

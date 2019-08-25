@@ -31,8 +31,11 @@ function(generateOsqueryProcess)
     osquery_headers
     osquery_utils_system_env
     thirdparty_boost
-    thirdparty_glibc_dl
   )
+
+  if(DEFINED PLATFORM_POSIX)
+    target_link_libraries(osquery_process PUBLIC thirdparty_glibc_dl)
+  endif()
 
   set(public_header_files
     process.h
