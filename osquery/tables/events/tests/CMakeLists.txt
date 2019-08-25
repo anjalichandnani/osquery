@@ -64,7 +64,7 @@ function(generateOsqueryTablesEventsTestsProcesseventstestsTest)
   add_osquery_executable(osquery_tables_events_tests_processeventstests-test linux/process_events_tests.cpp)
 
   target_link_libraries(osquery_tables_events_tests_processeventstests-test PRIVATE
-    global_cxx_settings
+    osquery_cxx_settings
     osquery_headers
     osquery_core
     osquery_config
