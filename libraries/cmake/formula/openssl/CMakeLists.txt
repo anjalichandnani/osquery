@@ -36,15 +36,16 @@ function(opensslMain)
         "--with-zlib-include=${thirdparty_zlib_INCLUDE_DIRS}"
         "--with-zlib-lib=${thirdparty_zlib_LIBRARIES}"
         linux-x86_64
+        -fPIC
 
     BUILD_COMMAND
      "${CMAKE_COMMAND}" -E env CC="${CMAKE_C_COMPILER}"
      "${CMAKE_COMMAND}" -E make_directory "${CMAKE_INSTALL_PREFIX}/etc/openssl" &&
-      $(MAKE) depend -j 10 &&
-      $(MAKE) -j 10
+      make depend -j 10 &&
+      make -j 10
 
     INSTALL_COMMAND
-      $(MAKE) install
+      make install
 
     BUILD_IN_SOURCE true
   )

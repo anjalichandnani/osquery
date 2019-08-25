@@ -16,17 +16,17 @@ function(importFormula library_name)
 
   message(STATUS "Importing formula: formula/${library_name}")
 
+  set(project_directory_path "${CMAKE_SOURCE_DIR}/libraries/cmake/formula/${library_name}")
+  set(build_directory_path "${CMAKE_CURRENT_BINARY_DIR}/${library_name}")
+  set(install_prefix "${OSQUERY_FORMULA_INSTALL_DIRECTORY}/${library_name}")
+
   if(NOT ${library_name}_formula_initialized)
     # Make sure the source folder exists
-    set(project_directory_path "${CMAKE_SOURCE_DIR}/libraries/cmake/formula/${library_name}")
-
     if(NOT EXISTS "${project_directory_path}")
       message(FATAL_ERROR "The formula was not found: ${project_directory_path}")
     endif()
 
     # Create the build folder in advance
-    set(build_directory_path "${CMAKE_CURRENT_BINARY_DIR}/${library_name}")
-
     execute_process(
       COMMAND "${CMAKE_COMMAND}" -E make_directory "${build_directory_path}"
       RESULT_VARIABLE error
@@ -37,8 +37,6 @@ function(importFormula library_name)
     endif()
 
     # We need to configure the project to capture its metadata
-    set(install_prefix "${OSQUERY_FORMULA_INSTALL_DIRECTORY}/${library_name}")
-
     if(DEFINED PLATFORM_WINDOWS)
       set(toolset_option -T "${CMAKE_GENERATOR_TOOLSET}")
     endif()
@@ -76,12 +74,12 @@ function(importFormula library_name)
         message(FATAL_ERROR "Failed to acquire the metadata field ${metadata_field} for formula ${library_name}\nstdout\n===\n${std_output}\n\n\nstderr\n===\n${std_error}")
       endif()
 
-      string(FIND "${std_output}" "[" value_start_index)
+      string(FIND "${std_output}" "[" value_start_index REVERSE)
       if(${value_start_index} EQUAL -1)
         message(FATAL_ERROR "Malformed metadata field ${metadata_field} for formula ${library_name}\nstdout\n===\n${std_output}\n\n\nstderr\n===\n${std_error}")
       endif()
 
-      string(FIND "${std_output}" "]" value_end_index)
+      string(FIND "${std_output}" "]" value_end_index REVERSE)
       if(${value_end_index} EQUAL -1)
         message(FATAL_ERROR "Malformed metadata field ${metadata_field} for formula ${library_name}\nstdout\n===\n${std_output}\n\n\nstderr\n===\n${std_error}")
       endif()
@@ -153,7 +151,7 @@ function(importFormula library_name)
     OUTPUT ${${library_name}_output_file_list}
     COMMAND "${CMAKE_COMMAND}" -E make_directory "${log_folder_path}"
     COMMAND "${CMAKE_COMMAND}" -E remove -f "${log_file_path}"
-    COMMAND "${CMAKE_COMMAND}" -DC_FLAGS:STRING="${c_compilation_flags}" -DCXX_FLAGS:STRING="${c_compilation_flags}" ${${library_name}_formula_dependency_settings} "${project_directory_path}" >> "${log_file_path}" 2>&1
+    COMMAND "${CMAKE_COMMAND}" -DC_FLAGS:STRING="${c_compilation_flags}" -DCXX_FLAGS:STRING="${cxx_compilation_flags}" ${${library_name}_formula_dependency_settings} "${project_directory_path}" > "${log_file_path}" 2>&1
     COMMAND "${CMAKE_COMMAND}" --build . --config "${CMAKE_BUILD_TYPE}" >> "${log_file_path}" 2>&1
     WORKING_DIRECTORY "${build_directory_path}"
     COMMENT "Running formula: ${library_name} (${log_file_path})"
@@ -171,16 +169,16 @@ function(importFormula library_name)
   # Generate the imported library
   add_library("thirdparty_${library_name}" INTERFACE)
 
-  foreach(output_lib ${metadata_libraries})
+  foreach(output_lib ${${library_name}_output_file_list})
     get_filename_component(output_lib_name "${output_lib}" NAME_WE)
     set(intermediate_target_name "thirdparty_intermediate_${output_lib_name}")
 
     add_library("${intermediate_target_name}" STATIC IMPORTED GLOBAL)
     set_target_properties("${intermediate_target_name}" PROPERTIES IMPORTED_LOCATION
-      "${install_prefix}/${output_lib}"
+      "${output_lib}"
     )
 
-    target_include_directories("${intermediate_target_name}" INTERFACE "${install_prefix}/include")
+    target_include_directories("thirdparty_${library_name}" INTERFACE "${install_prefix}/include")
     target_link_libraries("thirdparty_${library_name}" INTERFACE "${intermediate_target_name}")
   endforeach()
 
@@ -195,18 +193,14 @@ endfunction()
 
 function(getCompilationFlags language output_variable)
   if("${language}" STREQUAL "c")
-    set(target_name_list "c_settings")
+    set(target_name_list "thirdparty_c_settings")
 
   elseif("${language}" STREQUAL "cxx")
-    set(target_name_list "cxx_settings")
+    set(target_name_list "thirdparty_cxx_settings")
 
   else()
     message(FATAL_ERROR "Invalid language specified. Valid options are c and cxx")
   endif()
-
-  list(APPEND target_name_list
-    global_settings
-  )
 
   unset("${output_variable}")
 
