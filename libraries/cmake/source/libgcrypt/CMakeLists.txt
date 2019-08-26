@@ -166,7 +166,7 @@ function(libgcryptMain)
 
     add_custom_command(
       OUTPUT "${asm_object}"
-      COMMAND gcc -DHAVE_CONFIG_H -O2 -g -DNDEBUG -fPIC -std=gnu11 -o "${asm_object}" -c "${asm_source}" "-I${CMAKE_CURRENT_SOURCE_DIR}/config"
+      COMMAND ${CMAKE_C_COMPILER} -fno-integrated-as -DHAVE_CONFIG_H -O2 -g -DNDEBUG -fPIC -std=gnu11 -o "${asm_object}" -c "${asm_source}" "-I${CMAKE_CURRENT_SOURCE_DIR}/config"
       DEPENDS "${asm_source}"
       COMMENT "Assembling: ${asm_source}"
       VERBATIM

@@ -20,17 +20,12 @@ jobs:
       vmImage: 'Ubuntu-16.04'
 
     container:
-      image: trailofbits/osql-experimental:ubuntu-18.04
+      image: trailofbits/osquery:ubuntu-18.04
       options: --privileged
 
     timeoutInMinutes: 120
 
     steps:
-    # Temporary; this could be embedded in the Docker image, with the
-    # rest of the dependencies
-    - script: sudo apt-get update && sudo apt-get install flex bison gcc -y
-      displayName: "Installing Flex and Bison"
-
     - script: mkdir $(Build.BinariesDirectory)/build
       displayName: "Create build folder"
 
