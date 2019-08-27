@@ -105,7 +105,6 @@ function(berkeleydbMain)
     "${library_root}/src/fileops/fop_util.c"
     "${library_root}/src/hash/hash_auto.c"
     "${library_root}/src/hash/hash_autop.c"
-    "${library_root}/lang/sql/sqlite/src/hash.c"
     "${library_root}/src/hash/hash.c"
     "${library_root}/src/hash/hash_compact.c"
     "${library_root}/src/hash/hash_conv.c"

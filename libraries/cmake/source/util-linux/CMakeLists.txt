@@ -192,6 +192,13 @@ function(utillinuxMain)
     "${library_root}/lib/cpuset.c"
   )
 
+  # This is a small hack due to a symbol collision with the one exported by zlib
+  set_source_files_properties(
+    "${library_root}/lib/crc32.c"
+    "${library_root}/libblkid/src/superblocks/nilfs.c"
+    PROPERTIES COMPILE_FLAGS -Dcrc32=utillinux_crc32
+  )
+
   target_compile_definitions(thirdparty_util-linux PRIVATE
     HAVE_CONFIG_H
     LOCALEDIR=\"/usr/share/locale\"
@@ -217,10 +224,6 @@ function(utillinuxMain)
     "${CMAKE_CURRENT_SOURCE_DIR}/config"
   )
 
-  target_include_directories(thirdparty_util-linux SYSTEM INTERFACE
-    "${library_root}/include"
-  )
-
   # Generate the include files
   set(LIBBLKID_VERSION "2.27.0")
   set(LIBBLKID_DATE "02-Nov-2015")
@@ -238,6 +241,61 @@ function(utillinuxMain)
   set(LIBMOUNT_PATCH_VERSION 0)
 
   set(public_header_list
+    ":include/colors.h"
+    ":include/pt-mbr-partnames.h"
+    ":include/xalloc.h"
+    ":include/carefulputc.h"
+    ":include/bitops.h"
+    ":include/procutils.h"
+    ":include/path.h"
+    ":include/ismounted.h"
+    ":include/ttyutils.h"
+    ":include/pt-sun.h"
+    ":include/exec_shell.h"
+    ":include/closestream.h"
+    ":include/mbsalign.h"
+    ":include/optutils.h"
+    ":include/crc64.h"
+    ":include/pamfail.h"
+    ":include/rpmatch.h"
+    ":include/cpuset.h"
+    ":include/match.h"
+    ":include/at.h"
+    ":include/pt-bsd.h"
+    ":include/strutils.h"
+    ":include/pager.h"
+    ":include/loopdev.h"
+    ":include/exitcodes.h"
+    ":include/list.h"
+    ":include/mangle.h"
+    ":include/fileutils.h"
+    ":include/sysfs.h"
+    ":include/pathnames.h"
+    ":include/timeutils.h"
+    ":include/env.h"
+    ":include/all-io.h"
+    ":include/blkdev.h"
+    ":include/nls.h"
+    ":include/linux_reboot.h"
+    ":include/namespace.h"
+    ":include/minix.h"
+    ":include/pt-sgi.h"
+    ":include/pt-mbr.h"
+    ":include/setproctitle.h"
+    ":include/swapprober.h"
+    ":include/timer.h"
+    ":include/canonicalize.h"
+    ":include/strv.h"
+    ":include/color-names.h"
+    ":include/linux_version.h"
+    ":include/statfs_magic.h"
+    ":include/c.h"
+    ":include/swapheader.h"
+    ":include/md5.h"
+    ":include/widechar.h"
+    ":include/randutils.h"
+    ":include/monotonic.h"
+    ":include/debug.h"
     "uuid:libuuid/src/uuid.h"
     "blkid:libblkid/src/blkid.h.in"
     "fdisk:libfdisk/src/libfdisk.h.in"

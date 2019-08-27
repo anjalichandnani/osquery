@@ -67,7 +67,6 @@ function(generateLiblldpd)
     "${CMAKE_CURRENT_SOURCE_DIR}/generated/src/lib/atom-glue.c"
 
     "${library_root}/compat/strlcpy.c"
-    "${library_root}/compat/setproctitle.c"
     "${library_root}/compat/empty.c"
     "${library_root}/compat/strtonum.c"
     "${library_root}/log.c"
