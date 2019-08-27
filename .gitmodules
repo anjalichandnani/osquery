@@ -123,4 +123,4 @@
 	url = https://github.com/unicode-org/icu
 [submodule "libraries/cmake/source/augeas/gnulib/src"]
 	path = libraries/cmake/source/augeas/gnulib/src
-	url = https://github.com/theopolis/gnulib
+	url = https://github.com/osquery/third-party-gnulib
